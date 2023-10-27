@@ -5,15 +5,14 @@ file="school"
 if [ -e "$file" ];
 then
 	echo "school file exists"
-	if [ -s "$file" ]
+	if [ -s "$file" ];
 	then
-		echo "school file is empty"
-	else
 		echo "school file is not empty"
 		if [ -f "$file" ]
 		then
 			echo "school is a regular file"
 		fi
+	echo "school file is empty"
 	fi
 		
 else
