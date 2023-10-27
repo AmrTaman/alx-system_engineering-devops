@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #iam here
 
 for ((i = 1; i <= 100; i++)); do
