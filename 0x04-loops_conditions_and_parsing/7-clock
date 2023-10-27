@@ -2,16 +2,15 @@
 #iam here
 
 min=1
-hrs=0
-echo "Hour: $hrs"
+hrs=-1
 while [ $hrs -lt 12 ]
 do
+	((hrs++))
+	echo "Hour: $hrs"
 	while [ $min -le 59 ]
 	do
 		echo "$min"
 		((min++))
 	done
 min=1
-((hrs++))
-echo "Hour: $hrs"
 done
