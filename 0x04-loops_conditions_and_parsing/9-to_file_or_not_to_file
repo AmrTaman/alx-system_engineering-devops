@@ -2,7 +2,7 @@
 #iam here
 
 file="School"
-if [ -b "$file" ]
+if [ -e "$file" ]
 then
 	echo "school file exists"
 	if [ -s "$file" ]
