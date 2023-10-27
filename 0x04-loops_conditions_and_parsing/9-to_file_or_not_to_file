@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #iam here
 
-file="School"
-if [ -e "$file" ]
+file="school"
+if [ -e "$file" ];
 then
 	echo "school file exists"
 	if [ -s "$file" ]
