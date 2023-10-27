@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#iam here 
+for file in *; do
+	filename=$(echo "$file" | cut -d'-' -f2-)
+	echo "$filename"
+done
