@@ -1,5 +1,5 @@
 # iam here
-exec { "ayyy":
+exec { 'ayyyy':
 command => 'pkill killmenow',
 path    => ['/usr/bin', '/bin'],
 }
