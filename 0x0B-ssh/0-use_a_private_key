@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-
+# ssh command for setting private key file
 ssh -i ~/.ssh/school ubuntu@34.224.1.47
