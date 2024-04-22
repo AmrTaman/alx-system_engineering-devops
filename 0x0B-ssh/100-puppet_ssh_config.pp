@@ -1,25 +1,16 @@
-# Define SSH client configuration file path
-$ssh_config_file = '/home/vagrant/.ssh/config'
+# Seting up my client config file
+include stdlib
 
-# Ensure SSH client configuration file exists
- file { $ssh_config_file:
-   ensure => present,
-     owner  => 'vagrant',
-       group  => 'vagrant',
-         mode   => '0600',
-         }
+file_line { 'Turn off passwd auth':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => '    PasswordAuthentication no',
+  replace => true,
+}
 
-         # Ensure SSH client configuration includes private key and disables password authentication
-         file_line { 'Declare identity file':
-           path    => $ssh_config_file,
-             line    => '    IdentityFile ~/.ssh/school',
-               match   => '^#?IdentityFile',
-                 ensure  => present,
-                 }
-
-                 file_line { 'Turn off passwd auth':
-                   path    => $ssh_config_file,
-                     line    => '    PasswordAuthentication no',
-                       match   => '^#?PasswordAuthentication',
-                        ensure  => present,
-                         }
+file_line { 'Delare identity file':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => '     IdentityFile ~/.ssh/school',
+  replace => true,
+}
