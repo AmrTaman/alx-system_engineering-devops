@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#sssss
+echo "Hello Holberton" > /var/www/html/index.html
+
