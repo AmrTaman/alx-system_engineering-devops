@@ -5,6 +5,7 @@ sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 sudo mkdir -p /var/www/html /var/www/error
 sudo chmod -R 755 /var/www
+sudo chown -R "$USER":"$USER" /var/www/html /var/www/error
 echo 'Hello World!' > /var/www/html/index.html
 echo -e "Ceci n\x27est pas une page" > /var/www/error/404.html
 SERVER_CONFIG=\
