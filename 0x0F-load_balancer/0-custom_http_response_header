@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 #setting new header configuration
-sudo apt-get -y update
-sudo apt-get -y install nginx
+sudo apt-get update -y
+sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 sudo mkdir -p /var/www/html /var/www/error
 sudo chmod -R 755 /var/www
+sudo chown -R "$USER":"$USER" /var/www/html /var/www/error
 echo 'Hello World!' > /var/www/html/index.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo -e "Ceci n\x27est pas une page" > /var/www/error/404.html
 configuration=\
 "server {
 	listen 80 default_server;
