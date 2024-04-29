@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 #setting new header configuration
-
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo mkdir -p /var/www/html /var/www/error
+sudo chmod -R 755 /var/www
+echo 'Hello World!' > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 configuration=\
 "server {
 	listen 80 default_server;
@@ -23,6 +29,7 @@ configuration=\
 }"
 
 sudo bash -c "sudo echo -e '$configuration' > /etc/nginx/sites-available/default"
+sudo bash -c "sudo echo -e '$configuration' > /etc/nginx/sites-enabled/default"
 if [ "$(pgrep -c nginx)" -le 0 ]; then
 	sudo service nginx start
 else
