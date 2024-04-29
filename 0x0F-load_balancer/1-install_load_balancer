@@ -9,10 +9,12 @@ config=\
 "
 frontend http_front
     bind *:80
+    mode http
     default_backend http_back
 
 backend http_back
     balance roundrobin
+    mode http
     server 355975-web-01 54.165.2.91:80 check
     server 355975-web-02 54.210.108.204:80 check
 "
