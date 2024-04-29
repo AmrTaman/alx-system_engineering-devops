@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#installing HAproxy
+sudo apt-get update
+sudo apt-get install haproxy -y
+config=
