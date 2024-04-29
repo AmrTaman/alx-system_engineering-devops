@@ -32,11 +32,13 @@ backend http_back
     server 355975-web-01 54.165.2.91:80 check
     server 355975-web-02 54.210.108.204:80 check"
 
-sudo bash -c "sudo echo '$config' > /etc/haproxy/haproxy.cfg"
+sudo bash -c "sudo echo -e '$config' > /etc/haproxy/haproxy.cfg"
 
-sudo systemctl enable haproxy
+sudo chown -R "$USER":"$USER" /etc/default
 
-if [ "$(pgrep -c haproxy)" -le 0 ]; then
+sudo echo "ENABLED=1" >> /etc/default/haproxy
+
+if [[ "$(pgrep -c haproxy)" -le 0 ]]; then
   sudo service haproxy start
 else
   sudo service haproxy restart
