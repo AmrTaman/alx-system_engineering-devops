@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #installing HAproxy
 sudo apt-get update
-add-apt-repository ppa:vbernat/haproxy-2.9 -y
-apt-get install haproxy=2.9.\* -y
+sudo add-apt-repository ppa:vbernat/haproxy-2.9 -y
+sudo apt-get install haproxy=2.9.\* -y
 config=\
 "global
     log /dev/log local0
