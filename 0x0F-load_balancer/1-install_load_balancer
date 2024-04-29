@@ -6,7 +6,6 @@ sudo add-apt-repository ppa:vbernat/haproxy-2.9 -y
 sudo apt-get install haproxy=2.9.\* -y
 config=\
 "defaults
-    mode http
     timeout connect 10s
     timeout client  15s
     timeout server  15s
