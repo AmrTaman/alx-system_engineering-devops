@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
 #installing HAproxy
 sudo apt-get update
-sudo apt-get -y install --no-install-recommends software-properties-common
+sudo apt-get install --no-install-recommends software-properties-common -y
 sudo add-apt-repository ppa:vbernat/haproxy-2.9 -y
 sudo apt-get install haproxy=2.9.\* -y
 config=\
-"defaults
-    timeout connect 10s
-    timeout client  15s
-    timeout server  15s
-    timeout http-request 10s
-
+"
 frontend http_front
     bind *:80
     default_backend http_back
@@ -20,6 +15,8 @@ backend http_back
     server 355975-web-01 54.165.2.91:80 check
     server 355975-web-02 54.210.108.204:80 check
 "
+
+sudo cp /etc/haproxy/haproxy.cfg haproxy_default.backup
 
 sudo bash -c "sudo echo -e '$config' > /etc/haproxy/haproxy.cfg"
 
