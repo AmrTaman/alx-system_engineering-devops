@@ -20,7 +20,7 @@ exec {'redirect_me':
 }
 
 exec {'HTTP header':
-	command => 'sed -i "25i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+	command => 'sed -i "25i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-enabled/default',
 	provider => 'shell'
 }
 
