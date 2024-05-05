@@ -6,22 +6,18 @@ subdomains=( "www" "lb-01" "web-01" "web-02" )
 look_up ()
 
 {
-   if [[ -z "$3" ]]; then
-           dest=$(dig "$i.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $5}')
-           type=$(dig "$i.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $4}')
-           echo "The subdomain $i is a $type record and points to $dest"
-   else
-           dest=dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $5}'
-           type=dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $4}'
-           echo "The subdomain $3 is a $type record and points to $dest"
-   fi
-   }
+   local domain="$1"
+   local subdomain="$2"
+   local dest=$(dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $5}')
+   local type=$(dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $4}')
+   echo "The subdomain $subdomain is a $type record and points to $dest"
+}
 
-if [[ $# -lt  3 ]]; then
+if [[ $# -lt  2 ]]; then
         for i in "${subdomains[@]}";
         do
-                look_up "$i" "$1"
+                look_up "$1" "$i"
         done
 else
-        look_up "$1" "$2"
+        look_up "$@"
 fi
