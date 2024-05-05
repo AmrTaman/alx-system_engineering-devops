@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#iam here
+
+subdomains=( "www" "lb-01" "web-01" "web-02" )
+
+look_up ()
+
+{
+   if [[ -z "$3" ]]; then
+           dest=$(dig "$i.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $5}')
+           type=$(dig "$i.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $4}')
+           echo "The subdomain $i is a $type record and points to $dest"
+   else
+           dest=dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $5}'
+           type=dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $4}'
+           echo "The subdomain $3 is a $type record and points to $dest"
+   fi
+   }
+
+if [[ $# -lt  3 ]]; then
+        for i in "${subdomains[@]}";
+        do
+                look_up "$i" "$1"
+        done
+else
+        look_up "$1" "$2"
+fi
