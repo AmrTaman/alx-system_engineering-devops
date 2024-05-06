@@ -1,0 +1,22 @@
+defaults
+        mode  http
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+
+frontend www
+        bind *:80
+        mode http
+        http-request redirect scheme https code 301 unless { ssl_fc }
+        http-request set-header X_Forwarded-Proto http
+        default_backend clickviral-backend
+
+frontend www_secure
+        bind *:443 ssl crt /etc/haproxy/certs/www.amrtaman.tech.pem
+        http-request set-header X_Forwarded-Proto https
+        default_backend clickviral-backend
+
+backend clickviral-backend
+        balance roundrobin
+        server 355975-web-01 54.165.2.91:80 check
+        server 355975-web-02 54.210.108.204:80 check
