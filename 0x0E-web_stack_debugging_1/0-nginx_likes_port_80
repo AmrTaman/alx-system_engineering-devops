@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# iam here
-
-sudo ln /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+#iam here
+sudo ln /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
