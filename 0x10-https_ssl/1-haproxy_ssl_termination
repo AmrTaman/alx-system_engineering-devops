@@ -1,0 +1,18 @@
+defaults
+    mode http
+    timeout connect 10s
+    timeout client  15s
+    timeout server  15s
+    timeout http-request 10s
+
+frontend http_front
+    bind *:80
+    bind *:433 ssl crt /etc/ssl/certs/mysite.pem
+    http-request redirect scheme https code 301 unless { ssl_fc  }
+    http-request set-header X_Forwarded-Proto http
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server 355975-web-01 54.165.2.91:80 check
+    server 355975-web-02 54.210.108.204:80 check
