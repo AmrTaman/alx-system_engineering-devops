@@ -6,6 +6,6 @@ sudo chmod 755 /etc/nginx/nginx.conf
 sudo sed -i 's/^user www-data.*/user nginx;/' /etc/nginx/nginx.conf
 sudo sed -i 's/listen 80 default_server;/listen *:8080;/' /etc/nginx/sites-enabled/default
 sudo sed -i 's/listen \[::\]:80 default_server ipv6only=on;/listen [::]:8080;/' /etc/nginx/sites-enabled/default
-sudo kill 21
+sudo pkill -1 apache2
 sudo nginx -s reload
 sudo -u nginx bash -c 'service nginx restart'
