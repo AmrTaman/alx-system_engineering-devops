@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+#iam here
 sudo service nginx stop
 sudo chown -R nginx:nginx /etc/nginx /var/log/nginx
 sudo chmod 755 /etc/nginx/nginx.conf
