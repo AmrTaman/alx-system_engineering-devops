@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+#iamm
 *nat
 :PREROUTING ACCEPT [0:0]
 -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
