@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 #iam here
 sudo -u nginx service nginx stop
-sudo chmod 644 /etc/nginx/nginx.conf
-sed -i 's/^#user www-data.*/user nginx;/' /etc/nginx/nginx.conf
-sed -i 's/listen 80 default_server;/listen *:8080;/' /etc/nginx/sites-enabled/default
-sed -i 's/listen \[::\]:80 default_server ipv6only=on;/listen [::]:8080;/' /etc/nginx/sites-enabled/default
 pkill apache2
+chmod 644 /etc/nginx/nginx.conf
+sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 sudo -u nginx service nginx start
