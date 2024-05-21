@@ -20,6 +20,6 @@ if __name__ == "__main__":
     done_tasks = [task for task in todo_data if task['completed']]
     done_tasks_num = len(done_tasks)
     print("Employee {} is done with tasks"
-          "({}/{}):".format(name, all_tasks, done_tasks_num))
+          "({}/{}):".format(name, done_tasks_num, all_tasks))
     for task in done_tasks:
-        print("\t{}".format(task['title']))
+        print("\t {}".format(task['title']))
