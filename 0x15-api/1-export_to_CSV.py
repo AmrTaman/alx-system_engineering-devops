@@ -4,6 +4,7 @@ API fetching data
 """
 
 if __name__ == "__main__":
+    import csv
     import requests
     import sys
 
@@ -15,6 +16,7 @@ if __name__ == "__main__":
                           "/todos?userId={}".format(employee_id))
     todo_data = r_todo.json()
     with open("{}.csv".format(employee_id), 'w') as f:
+        csv_writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for i in todo_data:
-            f.write('"{}","{}","{}","{}"\n'.format(employee_id, name,
-                                                   i['completed'], i['title']))
+            csv_writer.writerow([employee_id, name, task['completed'],
+                                 task['title']])
