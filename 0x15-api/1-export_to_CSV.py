@@ -17,6 +17,6 @@ if __name__ == "__main__":
                           "/todos?userId={}".format(employee_id))
     todo_data = r_todo.json()
     with open("{}.csv".format(employee_id), 'w') as f:
-       for i in todo_data:
+        for i in todo_data:
             f.write('"{}","{}","{}","{}"\n'.format(employee_id, name,
                                                    i['completed'], i['title']))
