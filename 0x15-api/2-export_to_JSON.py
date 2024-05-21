@@ -35,5 +35,6 @@ def todojson():
                 .format(titles[-1], stat[-1], name))
         f.write(''']}''')
 
+
 if __name__ == "__main__":
     todojson()
