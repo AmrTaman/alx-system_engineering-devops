@@ -7,8 +7,6 @@ if __name__ == "__main__":
     import requests
     import sys
 
-    all_task_c = 0
-    tasks_done = 0
     employee_id = sys.argv[1]
     r_user = requests.get("https://jsonplaceholder.typicode.com"
                           "/users/{}".format(employee_id))
