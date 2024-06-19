@@ -7,13 +7,12 @@ iam here
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=None, count=0):
+def recurse(subreddit, hot_list=[], after=None):
     """
     iam here
     """
-    print("dd")
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    params = {'after': after, 'limit': 100, 'count': count}
+    params = {'after': after, 'limit': 100}
     headers = {'User-agent': 'python-requests/2.22.0'}
     resp = requests.get(url, params=params,
                         headers=headers, allow_redirects=False)
@@ -23,10 +22,9 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
         data = resp.json()
         posts = data['data']['children']
         after = data['data']['after']
-        count += data['data'].get("dist")
         for post in posts:
             title = post['data']['title']
             hot_list.append(title)
         if after is not None:
-            recurse(subreddit, hot_list, after, count)
+            recurse(subreddit, hot_list, after)
         return hot_list
