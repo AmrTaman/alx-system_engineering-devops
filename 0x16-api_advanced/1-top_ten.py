@@ -11,8 +11,10 @@ def top_ten(subreddit):
     """
     retrieves top 10 hot posts
     """
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
-    resp = requests.get(url, allow_redirects=False)
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    params = {'limit': 9}
+    headers = {'User-agent': 'python-requests/2.22.0'}
+    resp = requests.get(url, params=params, headers=headers, allow_redirects=False)
     if resp.status_code == 200:
         posts_lst = resp.json()['data']['children']
         for post in posts_lst:
