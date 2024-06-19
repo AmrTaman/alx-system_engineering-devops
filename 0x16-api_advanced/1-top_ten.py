@@ -11,7 +11,7 @@ def top_ten(subreddit):
     """
     retrieves top 10 hot posts
     """
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     params = {'limit': 10}
     headers = {'User-agent': 'python-requests/2.22.0'}
     resp = requests.get(url, params=params,
