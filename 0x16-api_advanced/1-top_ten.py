@@ -18,6 +18,7 @@ def top_ten(subreddit):
                         headers=headers, allow_redirects=False)
     if resp.status_code == 404:
         print("None")
+        return
     if resp.status_code == 200:
         posts_lst = resp.json()['data']['children']
         for post in posts_lst:
